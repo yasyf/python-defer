@@ -1,0 +1,20 @@
+[tool.poetry]
+name = "python-defer"
+version = "0.1.0"
+description = "Golang-style `defer` with no decorators!"
+authors = ["Yasyf Mohamedali <yasyfm@gmail.com>"]
+license = "MIT"
+# readme = "README.md"
+packages = [{ include = "defer" }]
+
+[tool.poetry.dependencies]
+python = "^3.11"
+sorcery = "^0.2.2"
+
+
+[tool.poetry.group.dev.dependencies]
+pytest = "^7.4.0"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
