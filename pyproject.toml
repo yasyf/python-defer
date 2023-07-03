@@ -10,6 +10,7 @@ packages = [{ include = "defer" }]
 [tool.poetry.dependencies]
 python = "^3.11"
 sorcery = "^0.2.2"
+asttokens = "^2.2.1"
 
 
 [tool.poetry.group.dev.dependencies]
