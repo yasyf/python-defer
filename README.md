@@ -5,6 +5,8 @@
 
 Use `python-defer` to schedule code to be run at the end of a function, whether or not anything fails. Think of it like an automagic `finally` block that you can use inline anywhere.
 
+Check out the [blog post](https://musings.yasyf.com/bringing-gos-defer-to-python/) to learn how this was built.
+
 ## Install
 
 ```console

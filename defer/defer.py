@@ -2,6 +2,7 @@ import sys
 from typing import Any, Callable, ParamSpec, TypeVar
 
 from defer._defer import _Defer
+from defer.sugar._parse import _ParseDefer
 
 P = ParamSpec("P")
 T = TypeVar("T")
@@ -9,7 +10,8 @@ T = TypeVar("T")
 
 class Defer:
     def __call__(self, fn: Callable[P, T], *args: P.args, **kwargs: P.kwargs):
-        assert sys.gettrace() is not None
+        if sys.gettrace() is None:
+            sys.settrace(_ParseDefer.IDENTITY)
         frame = sys._getframe(1)
         if not isinstance(frame.f_trace, _Defer):
             frame.f_trace = _Defer(frame.f_trace)
