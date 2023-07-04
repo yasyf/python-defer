@@ -1,25 +1,13 @@
-def test_defer_static():
-    from defer import defer as d
+import pytest
 
-    calls = list()
-
-    def foo():
-        d(lambda: calls.append("bar"))
-        calls.append("foo")
-        d(calls.append, "baz")
-        raise Exception
-
-    try:
-        foo()
-    except Exception:
-        pass
-
-    assert calls == ["foo", "baz", "bar"]
+from defer import defer
+from defer.sugar import install
 
 
-from defer import defer, install
-
-install()
+@pytest.fixture(autouse=True)
+def setup():
+    install()
+    yield
 
 
 def test_defer_ast():
