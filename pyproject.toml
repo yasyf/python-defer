@@ -4,7 +4,7 @@ version = "0.2.0"
 description = "Golang-style `defer` with no decorators!"
 authors = ["Yasyf Mohamedali <yasyfm@gmail.com>"]
 license = "MIT"
-# readme = "README.md"
+readme = "README.md"
 packages = [{ include = "defer" }]
 
 [tool.poetry.dependencies]
