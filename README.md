@@ -15,13 +15,40 @@ $ pip install python-defer
 
 The default way to use `python-defer` is true magic. Simply write your code and append an `in defer` to it.
 
+
 ```python
 from defer import defer
 
 def foo():
-  print("1") in defer
+  print(", world!") in defer
+  print("Hello", end="")
+  # do something that might fail...
+  assert 1 + 1 == 3
+```
+
+```console
+$ python foo.py
+Hello, World!
+Traceback (most recent call last):
+  File "foo.py", line 7, in <module>
+    assert 1 + 1 == 3
+AssertionError
+```
+
+
+
+### Sugarfree for me!
+
+If you prefer a more explicit approach, you can use the `d` function, which takes a `lambda`.
+
+
+```python
+from defer.sugarfree import defer as d
+
+def foo():
+  d(print, "1")
   print("2")
-  print("3") in defer
+  d(lambda: print("3"))
   raise RuntimeError("oh no!")
   print("4")
 ```
@@ -34,28 +61,4 @@ $ python foo.py
 Traceback (most recent call last):
   File "foo.py", line 7, in <module>
 RuntimeError: oh no!
-```
-
-
-### Sugarfree for me!
-
-If you prefer a more explicit approach, you can use the `d` function, which takes a `lambda`.
-
-```python
-from defer.sugarfree import defer as d
-
-def foo():
-  d(lambda: print(", world!"))
-  print("Hello")
-  # do something that might fail...
-  assert 1 + 1 == 3
-```
-
-```console
-$ python foo.py
-Hello, World!
-Traceback (most recent call last):
-  File "foo.py", line 7, in <module>
-    assert 1 + 1 == 3
-AssertionError
 ```
