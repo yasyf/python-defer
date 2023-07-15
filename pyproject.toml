@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "python-defer"
-version = "0.2.0"
+version = "0.2.1"
 description = "Golang-style `defer` with no decorators!"
 authors = ["Yasyf Mohamedali <yasyfm@gmail.com>"]
 license = "MIT"
